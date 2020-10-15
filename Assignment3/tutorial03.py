@@ -360,7 +360,7 @@ def new_file():
         # i=0
         for row in reader:
             first_name,last_name=(dict(row)['full_name']).split(' ')
-            new_file =  'studentinfo cs384 names split'+'.csv'
+            new_file =  'studentinfo_cs384_names_split'+'.csv'
             if chec:
                 with open(new_file,'a+',newline='') as file:
                     ad_data = csv.Writer(file)
@@ -375,8 +375,28 @@ def new_file():
     pass
 
 # Create the new file here and also sort it in this function only.
+chek2=True
 def new_file_sort():
     # Read csv and process
+    make('analytics')
+    new_file =  'studentinfo_cs384_names_split'+'.csv'
+    with open(new_file,'r') as file:
+        reader=csv.reader(file)
+        data=[]
+        for row in reader:
+            if chek2:
+                with open('studentinfo cs384 names split sorted first name.csv','a+',newline='') as file2:
+                    writer = csv.writer(file2)
+                    writer.writerow(row)
+                chek2=False
+            else:
+                data.append(dict(row)['first_name'],dict(row)['last_name'],[dict(row)['id'],dict(row)['country'],dict(row)['email'],dict(row)['gender'],dict(row)['dob'],dict(row)['blood_group'],dict(row)['state']]) 
+        data.sort()
+        for std_data in data:
+            with open('studentinfo cs384 names split sorted first name.csv','a+',newline='') as file2:
+                writer= csv.writer(file2)
+                writer.writerow([std_data[2],std_data[0],std_data[1],std_data[3],std_data[4],std_data[5],std_data[6],std_data[7],std_data[8]])              
+
+
     pass
 
-new_file()
