@@ -73,7 +73,7 @@ for roll in roll_no_list:
     with main_file:
         main_writer=csv.writer(main_file)
         main_writer.writerow(['Roll: '+roll])
-        main_writer.writerow(['Semester','Semester Credits','Semester Credits Cleared','SPI'])
+        main_writer.writerow(['Semester','Semester Credits','Semester Credits Cleared','SPI','Total Credits','Total Credits Cleared','CPI'])
     grades = {'AA':10,'AB':9,'BB':8,'BC':7,'CC':6,'CD':5,'DD':4,'F':0,'I':0}
     total_credits=0
     total_credits_cleared=0
@@ -93,7 +93,7 @@ for roll in roll_no_list:
             evry_Sem_included_total+=int(row[1])
         else:
             cumulative_performance_index+=semester_performance_index
-            lisc=[cursem,total_credits,total_credits_cleared,semester_performance_index/total_credits]
+            lisc=[cursem,total_credits,total_credits_cleared,semester_performance_index/total_credits,evry_Sem_included_total,evry_Sem_cleared_total,cumulative_performance_index/evry_Sem_included_total]
             main_file = open('./grades/'+roll+'_overall.csv', 'a',newline='')
             with main_file:
                 main_writer=csv.writer(main_file)
@@ -106,7 +106,7 @@ for roll in roll_no_list:
             evry_Sem_included_total+=int(row[1])
             
     cumulative_performance_index+=semester_performance_index
-    lisc=[cursem,total_credits,total_credits_cleared,semester_performance_index/total_credits] 
+    lisc=[cursem,total_credits,total_credits_cleared,semester_performance_index/total_credits,evry_Sem_included_total,evry_Sem_cleared_total,cumulative_performance_index/evry_Sem_included_total]
     main_file = open('./grades/'+roll+'_overall.csv', 'a',newline='')
     with main_file:
         main_writer=csv.writer(main_file)
