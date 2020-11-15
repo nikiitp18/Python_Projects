@@ -57,3 +57,57 @@ with file:
                 with main_list:
                     main_writer=csv.writer(main_list)
                     main_writer.writerow(list1)
+
+
+lis=[]
+for roll in roll_no_list:
+    file=open('./grades/'+roll+'_individual.csv','r')
+    with file:
+        reader=csv.reader(file)
+        for row in reader:
+            if(re.fullmatch(valid_entry_check,row[0])):
+                lis.append(row)
+    slis=sorted(lis,key=lambda l:l[4])
+    lis.clear()
+    main_file = open('./grades/'+roll+'_overall.csv', 'a',newline='')
+    with main_file:
+        main_writer=csv.writer(main_file)
+        main_writer.writerow(['Roll: '+roll])
+        main_writer.writerow(['Semester','Semester Credits','Semester Credits Cleared','SPI'])
+    grades = {'AA':10,'AB':9,'BB':8,'BC':7,'CC':6,'CD':5,'DD':4,'F':0,'I':0}
+    total_credits=0
+    total_credits_cleared=0
+    evry_Sem_included_total=0
+    evry_Sem_cleared_total=0
+    cursem='W'
+    semester_performance_index=0
+    cumulative_performance_index=0
+    for row in slis:
+        if(cursem=='W'):
+            cursem=row[4]
+        if(cursem==row[4]):
+            total_credits+=int(row[1])
+            total_credits_cleared+=int(row[1])
+            evry_Sem_cleared_total+=int(row[1])
+            semester_performance_index+=(grades[row[3]]*int(row[1]))
+            evry_Sem_included_total+=int(row[1])
+        else:
+            cumulative_performance_index+=semester_performance_index
+            lisc=[cursem,total_credits,total_credits_cleared,semester_performance_index/total_credits]
+            main_file = open('./grades/'+roll+'_overall.csv', 'a',newline='')
+            with main_file:
+                main_writer=csv.writer(main_file)
+                main_writer.writerow(lisc)
+            cursem=row[4]
+            total_credits=int(row[1])
+            total_credits_cleared=int(row[1])
+            evry_Sem_cleared_total+=int(row[1])
+            semester_performance_index=(grades[row[3]]*int(row[1]))
+            evry_Sem_included_total+=int(row[1])
+            
+    cumulative_performance_index+=semester_performance_index
+    lisc=[cursem,total_credits,total_credits_cleared,semester_performance_index/total_credits] 
+    main_file = open('./grades/'+roll+'_overall.csv', 'a',newline='')
+    with main_file:
+        main_writer=csv.writer(main_file)
+        main_writer.writerow(lisc)
