@@ -363,7 +363,7 @@ def new_file():
             new_file =  'studentinfo_cs384_names_split'+'.csv'
             if chec:
                 with open(new_file,'a+',newline='') as file:
-                    ad_data = csv.Writer(file)
+                    ad_data = csv.writer(file)
                     ad_data.writerow(['id','first_name','last_name','country','email','gender','dob','blood_group','state'])
                     chec=False
             with open(new_file,'a+',newline='') as file:
