@@ -29,7 +29,7 @@ def rename_HIMYM(series_selected):
 		except:
 			os.remove(each_dir)			
 
-# Suits!! seires episode renaming logic is implemented
+# Suits!! seires episode renaming logic is implemented.
 
 def rename_Suits(series_selected):
 	webseries_file = os.path.join('Subtitles',series_selected)
