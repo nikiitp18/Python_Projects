@@ -64,6 +64,8 @@ season = {'FIR':'FIR','GOT':'Game of Thrones','HIMYM':'How I Met Your Mother','S
 # logic part of executing function depending upon the input of the user
 if webseries_choice == "HIMYM":
 	rename_HIMYM(season['HIMYM'])
+elif webseries_choice == "SUT":
+	rename_Suits(season['SUT'])
 else:
     print(f"\nwarning:  make sure to write the code of the webseries as given. \ninvalid choice!! webseires with code '{webseries_choice}' doesn't exist in our system.")    
 
