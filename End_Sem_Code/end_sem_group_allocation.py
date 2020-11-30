@@ -3,7 +3,6 @@ import os
 import shutil
 import re
 import csv
-import math
 
 
 def group_allocation(filename, number_of_groups):
@@ -50,9 +49,9 @@ def group_allocation(filename, number_of_groups):
     with open(student_file_data, 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['BRANCH_CODE', 'STRENGTH'])
-        for i in list_branch_strength_sort:
-            branch_code = i[0]
-            branch_strength = i[1]
+        for detail in list_branch_strength_sort:
+            branch_code = detail[0]
+            branch_strength = detail[1]
             writer.writerow([branch_code, branch_strength])
 
     # task - 2 is implemented
@@ -70,6 +69,27 @@ def group_allocation(filename, number_of_groups):
                 Name = row[1]
                 Email = row[2]
                 writer.writerow([Roll_no, Name, Email])
+
+
+    group_data = {}
+    # students left after equal distribution
+    remaining_students = {}     
+    for num in range(1, number_of_groups+1,1):
+        # declaring group number
+        if num-10 < 0:
+            group_number = 'G0'+str(num)
+        else:
+            group_number = 'G'+str(num)
+        if group_number not in group_data:
+            group_data[group_number] = {}
+        for detail in list_branch_strength_sort:
+            # extracting details
+            branch_code = detail[0]
+            branch_strength = detail[1]
+            # equal distribution of students in each group
+            group_data[group_number][branch_code] = branch_strength//number_of_groups
+            # storing the remaining number of childs in each branch
+            remaining_students[branch_code] = branch_strength - (number_of_groups * (branch_strength//number_of_groups))
 
 
 filename = "Btech_2020_master_data.csv"
