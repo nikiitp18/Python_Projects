@@ -32,7 +32,7 @@ def group_allocation(filename, number_of_groups):
             # checking if this key exist in our dictionary or not
             if branch_code not in Btech_2020_data:
                 Btech_2020_data[branch_code] = []
-            Btech_2020_data[branch_code].append(row[0])
+            Btech_2020_data[branch_code].append(row)
 
     # extracting number of students in each branch
     branch_strength = {}
@@ -54,6 +54,22 @@ def group_allocation(filename, number_of_groups):
             branch_code = i[0]
             branch_strength = i[1]
             writer.writerow([branch_code, branch_strength])
+
+    # task - 2 is implemented
+    for branch_code in Btech_2020_data:
+        # file for particular branch code
+        file_name = os.path.join(cd, branch_code.upper() + '.csv')
+        with open(file_name, 'a', newline='') as file:
+            writer = csv.writer(file)
+
+            #  declaring column names in csv file
+            writer.writerow(['Roll', 'Name', 'Email'])
+            for row in Btech_2020_data[branch_code]:
+                # extracting roll no, name , email
+                Roll_no = row[0]
+                Name = row[1]
+                Email = row[2]
+                writer.writerow([Roll_no, Name, Email])
 
 
 filename = "Btech_2020_master_data.csv"
