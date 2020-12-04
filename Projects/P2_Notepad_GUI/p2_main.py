@@ -1,5 +1,5 @@
-# Rishabh Agarwal
-# 1801EE40
+# Nikhil Kumar
+# 1801EE27
 import pathlib
 import datetime
 import tkinter as tk
@@ -40,7 +40,7 @@ class Notepad(tk.Tk):
         self.configure(menu=self.menu)
         self.menu_file = tk.Menu(self.menu, tearoff=False)
         self.menu_edit = tk.Menu(self.menu, tearoff=False)
-        # self.menu_help = tk.Menu(self.menu, tearoff=False)
+        self.menu_help = tk.Menu(self.menu, tearoff=False)
 
         # file menu
         self.menu_file.add_command(
@@ -79,13 +79,13 @@ class Notepad(tk.Tk):
             label='Time/Date', accelerator='F5', command=self.get_datetime)
 
         # help menu
-        # self.menu_help.add_command(
-        #     label='About Notepad', command=self.about_me)
+        self.menu_help.add_command(
+            label='About Notepad', command=self.about_me)
 
         # add cascading menus to main menu
         self.menu.add_cascade(label='File', menu=self.menu_file)
         self.menu.add_cascade(label='Edit', menu=self.menu_edit)
-        # self.menu.add_cascade(label='Help', menu=self.menu_help)
+        self.menu.add_cascade(label='Help', menu=self.menu_help)
 
         # setup text text widget
         self.text_frame = tk.Frame(self)
@@ -242,10 +242,10 @@ class Notepad(tk.Tk):
         self.text.insert(tk.INSERT, datetime.datetime.now().strftime("%c"))
 
     # ---OTHER--------------------------------------------------------------------------------------
-    # def about_me(self):
-    #     """Application and license info"""
-    #     messagebox.showinfo(
-    #         "Notepad", 'This is a notepad, Developed By - Rishabh Agarwal(1801EE40)')
+    def about_me(self):
+        """Application and license info"""
+        messagebox.showinfo(
+            "Notepad", 'This is a notepad, Developed By - Nikhil Kumar(1801EE27)')
 
 
 if __name__ == '__main__':
