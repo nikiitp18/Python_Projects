@@ -75,8 +75,8 @@ class Notepad(tk.Tk):
         self.menu_edit.add_separator()
         self.menu_edit.add_command(
             label='Select All', accelerator='Ctrl+A', command=self.select_all)
-        # self.menu_edit.add_command(
-        #     label='Time/Date', accelerator='F5', command=self.get_datetime)
+        self.menu_edit.add_command(
+            label='Time/Date', accelerator='F5', command=self.get_datetime)
 
         # help menu
         # self.menu_help.add_command(
@@ -237,9 +237,9 @@ class Notepad(tk.Tk):
         """Select all text in the text widget"""
         self.text.tag_add(tk.SEL, '1.0', tk.END)
 
-    # def get_datetime(self, event=None):
-    #     """insert date and time at cursor position"""
-    #     self.text.insert(tk.INSERT, datetime.datetime.now().strftime("%c"))
+    def get_datetime(self, event=None):
+        """insert date and time at cursor position"""
+        self.text.insert(tk.INSERT, datetime.datetime.now().strftime("%c"))
 
     # ---OTHER--------------------------------------------------------------------------------------
     # def about_me(self):
