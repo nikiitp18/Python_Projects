@@ -80,7 +80,6 @@ def extract_database(username):
             writer = csv.writer(file)
             writer.writerow(details)
 
-
 def quiz_submit():
     """  Giving user a chance to submit quiz before time  """
     global flag
