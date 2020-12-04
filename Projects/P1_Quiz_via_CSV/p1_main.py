@@ -123,7 +123,6 @@ def timer(t):
     if flag == 1:
         flag = 2
 
-
 def start_quiz(rollno, Name, quiz_number):
     """ Function to start the quiz """
     global flag
@@ -253,7 +252,6 @@ def start_quiz(rollno, Name, quiz_number):
     print("Total Correct Question Attempted: ", Correct_Choices)
     print("Total Wrong Questions Attempted: ", Wrong_choices)
     print(f'Total Marks: {Marks_Obtained}/{Total_Quiz_Marks}')
-
 
 
 def Login():
