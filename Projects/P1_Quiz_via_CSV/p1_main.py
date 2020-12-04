@@ -87,7 +87,6 @@ def quiz_submit():
     print("Quiz Submitted!!")
     pass
 
-
 def timer(t):
     """ A GUI Based yimer which will run along with quiz """
     global flag
