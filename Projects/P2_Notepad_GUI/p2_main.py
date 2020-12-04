@@ -1,11 +1,13 @@
 # Nikhil Kumar
 # 1801EE27
+
 import pathlib
 import datetime
 import tkinter as tk
 from tkinter import Event, font as tkfont
 from tkinter.scrolledtext import ScrolledText
 from tkinter import filedialog, messagebox
+
 # importing other files classes, just done to distribute work load
 from texttools import Find, Replace
 from statusbar import StatusBar
