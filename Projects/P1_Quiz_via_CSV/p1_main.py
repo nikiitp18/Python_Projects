@@ -50,7 +50,6 @@ def goto():
     print("Press esc to continue!!")
     pass
 
-
 def extract_database(username):
     """  Extracting users data into a csv file  """
     con = sqlite3.connect("project1_quiz_cs384.db")
