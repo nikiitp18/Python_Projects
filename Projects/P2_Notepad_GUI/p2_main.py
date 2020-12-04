@@ -56,25 +56,25 @@ class Notepad(tk.Tk):
             label='Exit', command=self.quit_application, accelerator="Ctrl+Q")
 
         # edit menu
-        # self.menu_edit.add_command(
-        #     label='Undo', accelerator='Ctrl+Z', command=self.undo_edit)
-        # self.menu_edit.add_command(
-        #     label='Redo', accelerator='Ctrl+Y', command=self.redo_edit)
-        # self.menu_edit.add_separator()
-        # self.menu_edit.add_command(
-        #     label='Cut', accelerator='Ctrl+X', command=self.text_cut)
-        # self.menu_edit.add_command(
-        #     label='Copy', accelerator='Ctrl+C', command=self.text_copy)
-        # self.menu_edit.add_command(
-        #     label='Paste', accelerator='Ctrl+V', command=self.text_paste)
-        # self.menu_edit.add_separator()
-        # self.menu_edit.add_command(
-        #     label='Find', accelerator='Ctrl+F', command=self.ask_find_next)
-        # self.menu_edit.add_command(
-        #     label='Find and Replace', accelerator='Ctrl+H', command=self.ask_find_replace)
-        # self.menu_edit.add_separator()
-        # self.menu_edit.add_command(
-        #     label='Select All', accelerator='Ctrl+A', command=self.select_all)
+        self.menu_edit.add_command(
+            label='Undo', accelerator='Ctrl+Z', command=self.undo_edit)
+        self.menu_edit.add_command(
+            label='Redo', accelerator='Ctrl+Y', command=self.redo_edit)
+        self.menu_edit.add_separator()
+        self.menu_edit.add_command(
+            label='Cut', accelerator='Ctrl+X', command=self.text_cut)
+        self.menu_edit.add_command(
+            label='Copy', accelerator='Ctrl+C', command=self.text_copy)
+        self.menu_edit.add_command(
+            label='Paste', accelerator='Ctrl+V', command=self.text_paste)
+        self.menu_edit.add_separator()
+        self.menu_edit.add_command(
+            label='Find', accelerator='Ctrl+F', command=self.ask_find_next)
+        self.menu_edit.add_command(
+            label='Find and Replace', accelerator='Ctrl+H', command=self.ask_find_replace)
+        self.menu_edit.add_separator()
+        self.menu_edit.add_command(
+            label='Select All', accelerator='Ctrl+A', command=self.select_all)
         # self.menu_edit.add_command(
         #     label='Time/Date', accelerator='F5', command=self.get_datetime)
 
@@ -84,7 +84,7 @@ class Notepad(tk.Tk):
 
         # add cascading menus to main menu
         self.menu.add_cascade(label='File', menu=self.menu_file)
-        # self.menu.add_cascade(label='Edit', menu=self.menu_edit)
+        self.menu.add_cascade(label='Edit', menu=self.menu_edit)
         # self.menu.add_cascade(label='Help', menu=self.menu_help)
 
         # setup text text widget
@@ -194,48 +194,48 @@ class Notepad(tk.Tk):
         self.title(self.file.name + " - Notepad")
 
     # ---EDIT MENU CALLBACKS------------------------------------------------------------------------
-    # def undo_edit(self):
-    #     """Undo the last edit in the stack"""
-    #     try:
-    #         self.text.edit_undo()
-    #     except tk.TclError:
-    #         pass
+    def undo_edit(self):
+        """Undo the last edit in the stack"""
+        try:
+            self.text.edit_undo()
+        except tk.TclError:
+            pass
 
-    # def redo_edit(self):
-    #     """Redo the last edit in the stack"""
-    #     try:
-    #         self.text.edit_redo()
-    #     except tk.TclError:
-    #         pass
+    def redo_edit(self):
+        """Redo the last edit in the stack"""
+        try:
+            self.text.edit_redo()
+        except tk.TclError:
+            pass
 
-    # def text_copy(self):
-    #     """Append selected text to the clipboard"""
-    #     selected = self.text.get(tk.SEL_FIRST, tk.SEL_LAST)
-    #     self.text.clipboard_clear()
-    #     self.text.clipboard_append(selected)
+    def text_copy(self):
+        """Append selected text to the clipboard"""
+        selected = self.text.get(tk.SEL_FIRST, tk.SEL_LAST)
+        self.text.clipboard_clear()
+        self.text.clipboard_append(selected)
 
-    # def text_paste(self):
-    #     """Paste clipboard text into text widget at cursor"""
-    #     self.text.insert(tk.INSERT, self.text.clipboard_get())
+    def text_paste(self):
+        """Paste clipboard text into text widget at cursor"""
+        self.text.insert(tk.INSERT, self.text.clipboard_get())
 
-    # def text_cut(self):
-    #     """Cut selected text and append to clipboard"""
-    #     selected = self.text.get(tk.SEL_FIRST, tk.SEL_LAST)
-    #     self.text.delete(tk.SEL_FIRST, tk.SEL_LAST)
-    #     self.text.clipboard_clear()
-    #     self.text.clipboard_append(selected)
+    def text_cut(self):
+        """Cut selected text and append to clipboard"""
+        selected = self.text.get(tk.SEL_FIRST, tk.SEL_LAST)
+        self.text.delete(tk.SEL_FIRST, tk.SEL_LAST)
+        self.text.clipboard_clear()
+        self.text.clipboard_append(selected)
 
-    # def ask_find_next(self, event=None):
-    #     """Create find next popup widget"""
-    #     self.findnext = Find(self, self.text)
+    def ask_find_next(self, event=None):
+        """Create find next popup widget"""
+        self.findnext = Find(self, self.text)
 
-    # def ask_find_replace(self, event=None):
-    #     """Create replace popup widget"""
-    #     self.findreplace = Replace(self, self.text)
+    def ask_find_replace(self, event=None):
+        """Create replace popup widget"""
+        self.findreplace = Replace(self, self.text)
 
-    # def select_all(self):
-    #     """Select all text in the text widget"""
-    #     self.text.tag_add(tk.SEL, '1.0', tk.END)
+    def select_all(self):
+        """Select all text in the text widget"""
+        self.text.tag_add(tk.SEL, '1.0', tk.END)
 
     # def get_datetime(self, event=None):
     #     """insert date and time at cursor position"""
