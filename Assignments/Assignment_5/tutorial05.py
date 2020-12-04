@@ -135,30 +135,31 @@ def rename_GOT(series_selected):
 
 
 
+# mapping webseries name with their code 
+season = {1:'FIR',2:'Game of Thrones',3:'How I Met Your Mother',4:'Sherlock',5:'Suits'}
+
 # webseries to be choose, list of webseries is displayed
-webseries_choice = input("Webseries we have in our system:\n1. FIR {FIR}\n2. Game of Thrones {GOT}\n3. How I Met Your Mother {HIMYM}\n4. Sherlock {SLK}\n5. Suits {SUT}\nEnter the code of the webseries which you want ot rename {written inside curly braces}: \n")
+webseries_choice = int(input("Webseries we have in our system:\n1. FIR \n2. Game of Thrones \n3. How I Met Your Mother \n4. Sherlock \n5. Suits \nEnter a number corresponding to a series: "))
 
 # season is selected for the above specified webseries
-selected_season = input(f"Enter season number of webseries {webseries_choice} : ")
+selected_season = input(f"Enter season number of {season[webseries_choice]} webseries: ")
 
 # episode number is for the specified season of the given webseries
-selected_episode = input(f"Enter episode number of season {selected_season} of wbeseries {webseries_choice} : ")
+selected_episode = input(f"Enter episode number of season {selected_season} of {season[webseries_choice]} webseries: ")
 
-# mapping webseries name with their code 
-season = {'FIR':'FIR','GOT':'Game of Thrones','HIMYM':'How I Met Your Mother','SLK':'Sherlock','SUT':'Suits'}
 
 
 # logic part of executing function depending upon the input of the user
-if webseries_choice == "HIMYM":
-	rename_HIMYM(season['HIMYM'])
-elif webseries_choice == "SUT":
-	rename_Suits(season['SUT'])
-elif webseries_choice == "SLK":
-	rename_Sherlock(season['SLK'])
-elif webseries_choice == "FIR":
-	rename_FIR(season['FIR'])
-elif webseries_choice == "GOT":
-	rename_GOT(season['GOT'])
+if webseries_choice == 3:
+	rename_HIMYM(season[3])
+elif webseries_choice == 5:
+	rename_Suits(season[5])
+elif webseries_choice == 4:
+	rename_Sherlock(season[4])
+elif webseries_choice == 1:
+	rename_FIR(season[1])
+elif webseries_choice == 2:
+	rename_GOT(season[2])
 else:
     print(f"\nwarning:  make sure to write the code of the webseries as given. \ninvalid choice!! webseires with code '{webseries_choice}' doesn't exist in our system.")    
 
