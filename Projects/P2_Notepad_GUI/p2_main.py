@@ -109,14 +109,14 @@ class Notepad(tk.Tk):
         self.status_bar = StatusBar(self, self.text)
 
         # general callback binding
-        # self.bind("<Control-n>", self.new_file)
-        # self.bind("<Control-o>", self.open_file)
-        # self.bind("<Control-s>", self.save_file)
-        # self.bind("<Control-S>", self.save_file_as)
-        # self.bind("<Control-f>", self.ask_find_next)
-        # self.bind("<Control-h>", self.ask_find_replace)
-        # self.bind("<Control-q>", self.quit_application)
-        # self.bind("<F5>", self.get_datetime)
+        self.bind("<Control-n>", self.new_file)
+        self.bind("<Control-o>", self.open_file)
+        self.bind("<Control-s>", self.save_file)
+        self.bind("<Control-S>", self.save_file_as)
+        self.bind("<Control-f>", self.ask_find_next)
+        self.bind("<Control-h>", self.ask_find_replace)
+        self.bind("<Control-q>", self.quit_application)
+        self.bind("<F5>", self.get_datetime)
 
         # final setup
         self.update_title()
