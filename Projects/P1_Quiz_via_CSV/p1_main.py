@@ -25,7 +25,6 @@ global flag
 # -1 user forcefully submitted
 # 0 ques over
 
-
 def goto():
     """   Gives the user a chance to access whatever ques he/she wants   """
     i = int(input('which question you want to go: '))
